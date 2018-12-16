@@ -9,6 +9,10 @@ module.exports = {
   
   entry: `./src/main.js`,
 
+  node: {
+    fs: 'empty'
+  },
+
   output: 
   {
     path: path.resolve(__dirname, 'dist'),
@@ -37,6 +41,13 @@ module.exports = {
           { loader: "style-loader" },
           { loader: "css-loader" },
           { loader: "sass-loader" }
+        ]
+      },
+      {
+        test: /\.css$/,
+        use: [
+          { loader: "style-loader" },
+          { loader: "css-loader" }
         ]
       },
       {
