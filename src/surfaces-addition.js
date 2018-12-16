@@ -40,6 +40,7 @@ class SurfacesAddition {
   }
 
   initGrid () {
+    this.boxes = new THREE.Group();
     this.grid = new Array(config.gridsize*config.gridsize);
     this.materials = new Array(config.gridsize*config.gridsize);
     
@@ -56,14 +57,13 @@ class SurfacesAddition {
       });
       this.grid[i] = new THREE.Mesh(rect, this.materials[i]);
       this.grid[i].position.set(x*(config.barSize+config.gap)-this.gridDim/2, 0, y*(config.barSize+config.gap)-this.gridDim/2);
-      this.scene.add(this.grid[i]);
+      this.boxes.add(this.grid[i]);
+      this.scene.add(this.boxes);
     }
   }
 
   updateGrid () {
-    for (let i = 0; i < this.grid.length; i++) {
-      this.scene.remove(this.grid[i]);
-    }
+    this.scene.remove(this.boxes);
     this.initGrid();
   }
 
@@ -81,6 +81,8 @@ class SurfacesAddition {
       this.grid[i].visible = (z != 0);
       this.grid[i].scale.setY(z);
     }
+
+    this.boxes.rotateY(deltaT / 5000.0);
   }
 }
 

@@ -62,6 +62,10 @@ module.exports = {
       {
         test: /\.(png|svg|jpg|jpeg|gif|obj)$/,
         use: [ "file-loader" ]
+      },
+      {
+        test: /\.frag$/,
+        use: [ "raw-loader" ]
       }
     ]
   },
@@ -69,7 +73,7 @@ module.exports = {
   devServer: {
     port: 9000,
     inline: true,
-    contentBase: "./dist/",
+    contentBase: "./public/",
     open: true,
     overlay: true,
     stats: "minimal"

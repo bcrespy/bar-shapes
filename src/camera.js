@@ -9,17 +9,20 @@ import * as THREE from "three";
 const OrbitControls = require('three-orbitcontrols')
 
 
+const cosPI4 = Math.cos(Math.PI/4);
+
 class Camera {
   /**
    * 
    * @param {THREE.Scene} scene 
    * @param {THREE.Vector3} position 
    */
-  constructor (scene, renderer, position = new THREE.Vector3(15, 15, 15)) {
+  constructor (scene, renderer, distance = 15) {
     this.scene = scene;
+    this.distance = distance;
 
     this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-    this.camera.position.set(position.x, position.y, position.z);
+    this.camera.position.set(distance, distance, distance);
     this.camera.lookAt(0, 0, 0);
 
     const controls = new OrbitControls(this.camera, renderer.domElement);
@@ -37,7 +40,7 @@ class Camera {
   }
 
   update (deltaT, time) {
-
+    
   }
 };
 

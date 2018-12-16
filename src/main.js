@@ -16,6 +16,21 @@ import AudioManager from "@creenv/audio/manager";
 
 
 class MyProject extends Creenv {
+  constructor () {
+    super();
+    this.audio = new AudioManager(AudioManager.SOURCE_TYPE.FILE, {
+      filepath: "assets/martin-books-flitzepulver-original-mix-carti-records-cut.wav",
+      //feedback: false,
+      analyser: {
+        peakDetection: {
+          options: {
+            threshold: 1.45
+          }
+        }
+      }
+    }, true);
+  }
+
   init() {
     super.init();
     super.framerate(60);
@@ -28,17 +43,6 @@ class MyProject extends Creenv {
 
     // we initialize our renderer
     this.visualizer = new Visualizer();
-
-    this.audio = new AudioManager(AudioManager.SOURCE_TYPE.MICROPHONE, {
-      feedback: false,
-      analyser: {
-        peakDetection: {
-          options: {
-            threshold: 1.1
-          }
-        }
-      }
-    }, false);
 
     return new Promise(resolve => {
       this.visualizer.init().then(() => {
@@ -58,13 +62,16 @@ class MyProject extends Creenv {
 }
 
 let project = new MyProject();
-project.bootstrap(); 
+//project.bootstrap(); 
 
-/*new Capture(project, {
+new Capture(project, {
   framerate: 30,
   export: {
-    type: "png-sequence",
+    type: "jpeg-sequence",
     framerate: 30,
     filename: "render.zip"
+  },
+  audio: {
+    manager: project.audio
   }
-})*/
+});

@@ -21,7 +21,7 @@ class SurfaceWavy extends Surface3D {
   getZ (x, y, t, audioData) {
     x*= 4.0;
     y*= 4.0;
-    return 0.001*audioData.multibandEnergy[1]*(Math.cos(x+y) + (x*x)/6.0 - (y*y)/6.0);
+    return 0.00005*audioData.multibandEnergy[1]*(Math.cos(x+y) + (x*x)/6.0 - (y*y)/6.0);
   }
 };
 
