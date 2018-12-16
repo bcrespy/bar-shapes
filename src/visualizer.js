@@ -112,7 +112,7 @@ class Visualizer {
 
     if (audioData.peak.value == 1) 
       this.aberrationEffect.setRandomDirections();
-    this.aberrationEffect.strength = audioData.peak.value * 0.01 * audioData.peak.energy/30.0;
+    this.aberrationEffect.strength = audioData.peak.value * config.shiftStrength * audioData.peak.energy/30.0;
 
     this.stretchEffect.distanceMin = config.distanceMin;
     this.stretchEffect.distanceRange = config.distanceRange;
@@ -120,7 +120,7 @@ class Visualizer {
       this.stretchEffect.setRandomDirections();
     }
     this.stretchEffect.uniforms.get("appliance").value = audioData.peak.value * audioData.energy/30.0;
-    this.stretchEffect.uniforms.get("strength").value = config.stretch * audioData.energy/20.0;
+    this.stretchEffect.uniforms.get("strength").value = config.stretch * audioData.energy/40.0;
   }
  
   /**

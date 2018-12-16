@@ -19,7 +19,7 @@ class MyProject extends Creenv {
   constructor () {
     super();
     this.audio = new AudioManager(AudioManager.SOURCE_TYPE.FILE, {
-      filepath: "assets/martin-books-flitzepulver-original-mix-carti-records-cut.wav",
+      filepath: "assets/martin-books-flitzepulver-original-mix-carti-records.mp3",
       //feedback: false,
       analyser: {
         peakDetection: {

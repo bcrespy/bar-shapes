@@ -28,6 +28,6 @@ export default {
   distanceRange: 0.06,
 
   // the rgb shift
-  shiftStrength: 0.07
+  shiftStrength: 0.02
 
 };
